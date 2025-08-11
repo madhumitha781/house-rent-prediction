@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regression Model Selector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Regression Model Prediction</h1>
+    <form action="/predict" method="POST">
+        {% for feature in feature_names %}
+            <label>{{ feature }}:</label>
+            <input type="number" step="any" name="{{ feature }}" required><br>
+        {% endfor %}
+
+        <label>Choose Model:</label>
+        <select name="model">
+            {% for model in model_names %}
+                <option value="{{ model }}">{{ model }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
